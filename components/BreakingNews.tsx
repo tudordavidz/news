@@ -19,11 +19,11 @@ import Animated, {
 import Pagination from "@/components/Pagination";
 
 type Props = {
-  newsLists: Array<NewsDataType>;
+  newsList: Array<NewsDataType>;
 };
 
-const BreakingNews = ({ newsLists }: Props) => {
-  const [data, setData] = useState(newsLists);
+const BreakingNews = ({ newsList }: Props) => {
+  const [data, setData] = useState(newsList);
   const [paginationIndex, setPaginationIndex] = useState(0);
   const scrollX = useSharedValue(0);
   const ref = useAnimatedRef<Animated.FlatList<any>>();
@@ -69,7 +69,7 @@ const BreakingNews = ({ newsLists }: Props) => {
       viewableItems[0].index !== undefined &&
       viewableItems[0].index !== null
     ) {
-      setPaginationIndex(viewableItems[0].index % newsLists.length);
+      setPaginationIndex(viewableItems[0].index % newsList.length);
     }
   };
 
@@ -98,7 +98,7 @@ const BreakingNews = ({ newsLists }: Props) => {
           onScroll={onScrollHandler}
           scrollEventThrottle={16}
           onEndReachedThreshold={0.5}
-          onEndReached={() => setData([...data, ...newsLists])}
+          onEndReached={() => setData([...data, ...newsList])}
           viewabilityConfigCallbackPairs={
             viewabilityConfigCallbackPairs.current
           }
@@ -110,7 +110,7 @@ const BreakingNews = ({ newsLists }: Props) => {
           }}
         />
         <Pagination
-          items={newsLists}
+          items={newsList}
           scrollX={scrollX}
           paginationIndex={paginationIndex}
         />

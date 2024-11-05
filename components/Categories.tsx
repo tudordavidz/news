@@ -28,9 +28,8 @@ const Categories = ({ onCategoryChanged }: Props) => {
     selected?.measure((x) => {
       scrollRef.current?.scrollTo({ x: x - 20, y: 0, animated: true });
     });
+    onCategoryChanged(newsCategoryList[index].slug);
   };
-
-  onCategoryChanged(newsCategoryList[activeIndex].slug);
 
   return (
     <View>
@@ -43,9 +42,9 @@ const Categories = ({ onCategoryChanged }: Props) => {
       >
         {newsCategoryList.map((item, index) => (
           <TouchableOpacity
-            ref={(el) => (itemRef.current[index] = el ?? null)}
+            ref={(el) => (itemRef.current[index] = el)}
             key={index}
-            style={[styles.item, index === activeIndex && styles.itemActive]}
+            style={[styles.item, activeIndex === index && styles.itemActive]}
             onPress={() => handleSelectCategory(index)}
           >
             <Text
