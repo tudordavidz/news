@@ -56,13 +56,13 @@ const NewsDetails = (props: Props) => {
         if (data == null) {
           res.push(newsId);
           AsyncStorage.setItem("bookmarks", JSON.stringify(res));
-          alert("News Saved!");
+          // alert("News Saved!");
         }
       } else {
         let bookmark = [];
         bookmark.push(newsId);
         AsyncStorage.setItem("bookmarks", JSON.stringify(bookmark));
-        alert("News Saved! ");
+        // alert("News Saved! ");
       }
     });
   };
@@ -74,7 +74,7 @@ const NewsDetails = (props: Props) => {
       return res.filter((id: string) => id !== newsId);
     });
     await AsyncStorage.setItem("bookmarks", JSON.stringify(bookmark));
-    alert("News unsaved!");
+    //alert("News unsaved!");
   };
 
   const renderBookmark = async (newsId: string) => {

@@ -23,7 +23,7 @@ const Page = (props: Props) => {
     const fetchNews = async () => {
       await getBreakingNews();
       await getNews();
-      setIsLoading(false); // Ensure loading state is updated after both calls
+      setIsLoading(false);
     };
 
     fetchNews();
@@ -66,7 +66,7 @@ const Page = (props: Props) => {
   return (
     <ScrollView style={[styles.container, { paddingTop: safeTop }]}>
       <Header />
-      <SearchBar withHorizontalPadding={true} />
+      {/* <SearchBar withHorizontalPadding={true} /> */}
       {isLoading ? (
         <Loading size={"large"} />
       ) : (

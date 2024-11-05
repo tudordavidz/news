@@ -27,6 +27,7 @@ const Page = (props: Props) => {
   const fetchBookmark = async () => {
     await AsyncStorage.getItem("bookmarks").then(async (token) => {
       const res = JSON.parse(token);
+      setIsLoading(true);
       if (res) {
         let query_string = res.join(",");
         const response = await axios.get(
